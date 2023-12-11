@@ -21,7 +21,11 @@ function TransactionsList({ transactionsData }) {
           </th>
         </tr>
         {/* render a list of <Transaction> components here */}
-
+        {transactionsData.map((transaction) => {
+          return (
+            <Transaction key={transaction.id} data={transaction} />
+          )
+        })}
       </tbody>
     </table >
   );
