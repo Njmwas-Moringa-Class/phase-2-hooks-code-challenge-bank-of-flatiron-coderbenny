@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-function AddTransactionForm() {
+function AddTransactionForm({ handleNewTransaction }) {
 
-
+  // State for the form fields
   const [date, setDate] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [amount, setAmount] = useState('')
 
+  // functions for handling form field events
   function handleDate(event) {
     setDate(event.target.value)
   }
@@ -24,15 +25,17 @@ function AddTransactionForm() {
     setAmount(event.target.value)
   }
 
+  // Function for handling form submit
   function handleSubmit(event) {
     event.preventDefault()
     const formData = {
+      id: '',
       date: date,
       description: description,
       category: category,
       amount: amount,
     }
-    console.log(formData)
+    handleNewTransaction(formData)
   }
 
   return (
