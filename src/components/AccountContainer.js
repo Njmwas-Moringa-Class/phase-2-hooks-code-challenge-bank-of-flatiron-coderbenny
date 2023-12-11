@@ -37,11 +37,27 @@ function AccountContainer({ allTransactions }) {
       })
   }
 
+  // Function for handling search
+  function handleSearchTransactions(search) {
+    if (search !== '') {
+      const searchFilter = bankData.filter((transaction) => transaction.description.toLowerCase().startsWith(search.toLowerCase()))
+      setBankData(searchFilter)
+    } else {
+      fetch("http://localhost:8001/transactions")
+        .then(response => response.json())
+        .then(data => {
+          setBankData(data)
+        })
+        .catch(error => {
+          console.error("An error occurred while fetching data" + error)
+        })
+    }
+  }
 
 
   return (
     <div>
-      <Search />
+      <Search handleSearchText={handleSearchTransactions} />
       <AddTransactionForm handleNewTransaction={addTransaction} />
       <TransactionsList transactionsData={bankData} />
     </div>
