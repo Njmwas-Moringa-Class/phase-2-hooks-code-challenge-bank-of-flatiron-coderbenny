@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
-function AccountContainer() {
+function AccountContainer({ allTransactions }) {
+
+  // State for all transactions
+  const [transactions, setTransactions] = useState(allTransactions)
+
+
   return (
     <div>
       <Search />
       <AddTransactionForm />
-      <TransactionsList />
+      <TransactionsList transactionData={transactions} />
     </div>
   );
 }
