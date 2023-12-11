@@ -7,13 +7,13 @@ function AccountContainer({ allTransactions }) {
 
   // State for all transactions
   const [transactions, setTransactions] = useState(allTransactions)
-
+  // console.log(transactions)
 
   return (
     <div>
       <Search />
       <AddTransactionForm />
-      <TransactionsList transactionData={transactions} />
+      <TransactionsList transactionsData={transactions} />
     </div>
   );
 }
